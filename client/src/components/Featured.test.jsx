@@ -17,4 +17,18 @@ describe('Featured Component', () => {
             expect(textElement).toBeInTheDocument()
         })
     })
+
+    describe('Secure', () => {
+        test('renders delivery correctly', () => { 
+            render(<Featured />)
+            const textElement = screen.getByText('Secure Payment')
+            expect(textElement).toBeInTheDocument()
+        })
+
+        test('renders price correctly', () => { 
+            render(<Featured />)
+            const textElement = screen.getByText('Paypal & Credit')
+            expect(textElement).toBeInTheDocument()
+        })
+    })
 });
