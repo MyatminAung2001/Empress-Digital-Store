@@ -10,7 +10,7 @@ const Featured = () => {
             <div className="flex items-center justify-center gap-x-2 shadow-CustomShadow px-4 py-3 mb-3 rounded-md md:mb-0">
                 <img 
                     src={Delivery} 
-                    alt="" 
+                    alt="delivery-logo" 
                     className=""
                 />
                 <div>
@@ -25,7 +25,7 @@ const Featured = () => {
             <div className="flex items-center justify-center gap-x-2 shadow-CustomShadow px-4 py-3 mb-3 rounded-md md:mb-0">
                 <img 
                     src={Secure} 
-                    alt="" 
+                    alt="secure-logo" 
                     className="w-[15%]"
                 />
                 <div>
@@ -40,7 +40,7 @@ const Featured = () => {
             <div className="flex items-center justify-center gap-x-2 shadow-CustomShadow px-4 py-3 mb-3 rounded-md md:mb-0">
                 <img 
                     src={Support} 
-                    alt="" 
+                    alt="support-logo" 
                     className="w-[15%]"
                 />
                 <div>
