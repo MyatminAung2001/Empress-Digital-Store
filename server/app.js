@@ -1,7 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import { OAuth2Client } from 'google-auth-library';
 
 import authRoute from './routes/auth.js';
 import userRoute from './routes/user.js';
