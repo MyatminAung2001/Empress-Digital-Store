@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import { MdOutlineCancel } from 'react-icons/md';
 import axios from 'axios';
 
-import { ItemSearchReducer } from '../context/ItemSearchReducer';
+import { ItemSearchReducer } from '../context/itemSearch-reducer';
 import { prices } from '../utils/data';
 import { ratings } from '../utils/data';
 import Rating from '../components/Rating';

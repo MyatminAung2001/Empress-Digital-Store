@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 
-import { ItemReducer } from '../context/ItemReducer';
+import { ItemReducer } from '../context/item-reducer';
 import ItemsList from '../components/ItemsList';
 import Ads from '../components/Ads';
 import Brand from '../components/Brand';

@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
 import { Context } from '../context/_context';
-import { UpdateProfileReducer } from '../context/ProfileUpdateReducer';
+import { UpdateProfileReducer } from '../context/profileUpdate-reducer';
 
 const Profile = () => {
 

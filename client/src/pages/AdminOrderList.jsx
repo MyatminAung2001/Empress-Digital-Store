@@ -7,7 +7,7 @@ import { FaTrashAlt, FaRegEdit } from 'react-icons/fa';
 import axios from 'axios';
 
 import { Context } from '../context/_context';
-import { OrderListReducer } from '../context/OrderListReducer';
+import { OrderListReducer } from '../context/orderList-reducer';
 import Loading from '../components/Loading';
 
 const AdminOrderList = () => {

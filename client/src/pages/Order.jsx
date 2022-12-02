@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
-import { OrderReducer } from '../context/OrderReducer';
+import { OrderReducer } from '../context/order-reducer';
 import { Context } from '../context/_context';
 import Stepper from '../components/Stepper';
 

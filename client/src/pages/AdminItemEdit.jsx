@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
-import { ItemEditReducer } from '../context/ItemEditReducer';
+import { ItemEditReducer } from '../context/itemEdit-reducer';
 import { Context } from '../context/_context';
 import Loading from '../components/Loading';
 

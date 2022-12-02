@@ -6,7 +6,7 @@ import { FaTrashAlt } from 'react-icons/fa';
 import axios from 'axios';
 
 import { Context } from '../context/_context';
-import { UserListReducer } from '../context/UserListReducer';
+import { UserListReducer } from '../context/userList-reducer';
 import Loading from '../components/Loading';
 
 const AdminUserList = () => {

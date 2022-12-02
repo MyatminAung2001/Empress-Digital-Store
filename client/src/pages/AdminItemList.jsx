@@ -6,7 +6,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
-import { ItemListReducer } from '../context/ItemListReducer';
+import { ItemListReducer } from '../context/itemList-reducer';
 import { Context } from '../context/_context';
 import Loading from '../components/Loading';
 

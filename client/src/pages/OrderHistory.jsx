@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import axios from 'axios';
 
 import { Context } from '../context/_context';
-import { OrderHistoryReducer } from '../context/OrderHistoryReducer';
+import { OrderHistoryReducer } from '../context/orderHistory-reducer';
 import Loading from '../components/Loading';
 
 const OrderHistory = () => {

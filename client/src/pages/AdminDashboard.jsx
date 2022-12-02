@@ -4,7 +4,7 @@ import Chart from 'react-google-charts';
 import axios from 'axios';
 
 import { Context } from '../context/_context';
-import { DashBoardReducer } from '../context/DashboardReducer';
+import { DashBoardReducer } from '../context/dashboard-reducer';
 import Loading from '../components/Loading';
 
 const AdminDashboard = () => {

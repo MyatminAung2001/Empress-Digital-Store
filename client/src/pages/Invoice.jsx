@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import axios from 'axios';
 
 import { Context } from '../context/_context';
-import { InvoiceReducer } from '../context/InvoiceReducer';
+import { InvoiceReducer } from '../context/invoice-reducer';
 import Loading from '../components/Loading';
 
 const Invoice = () => {

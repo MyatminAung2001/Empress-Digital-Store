@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 
 import { Context } from '../context/_context';
-import { ItemDetailReducer } from '../context/ItemDetailReducer';
+import { ItemDetailReducer } from '../context/itemDetail-reducer';
 import Rating from '../components/Rating';
 import Loading from '../components/Loading';
 
