@@ -19,7 +19,7 @@ const Order = () => {
         loading: false,
     });
 
-    // Price Handler
+    /** Price Handler */
     const round = (num) => Math.round(num * 100 + Number.EPSILON) / 100  //123.456 => 123.45
 
     cart.itemsPrice =  round(
@@ -29,6 +29,7 @@ const Order = () => {
     cart.taxPrice = round(0.002 * cart.itemsPrice)
     cart.totalPrice = cart.itemsPrice + cart.deliveryPrice + cart.taxPrice;
 
+    /** Confirm Order */
     const confirmOrderHandler = async () => {
         const orderData = {
             orderItems: cart.cartItems,
@@ -65,6 +66,7 @@ const Order = () => {
         }   
     };
 
+    /** if cart paymentMethod is empty */
     useEffect(() => {
         if (!cart.paymentMethod) {
             navigate('/payment')

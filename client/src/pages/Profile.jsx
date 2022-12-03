@@ -12,17 +12,20 @@ const Profile = () => {
 
     const navigate = useNavigate();
 
+    /** User Context */
+    const { state, dispatch: updateDispatch } = useContext(Context);
+    const { userInfo } = state;
+
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const { state, dispatch: updateDispatch } = useContext(Context);
-    const { userInfo } = state;
-
+    /** Update Profile Reducer */
     const [{ loading }, dispatch] = useReducer(UpdateProfileReducer, {
         loading: false
     })
 
+    /** Update Profile */
     const updateProfileHandler = async (e) => {
         e.preventDefault();
 

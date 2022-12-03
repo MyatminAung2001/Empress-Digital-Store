@@ -9,17 +9,20 @@ const Payment = () => {
 
     const navigate = useNavigate();
     
+    /** Delivery Context */
     const { state, dispatch: paymentDispatch } = useContext(Context);
     const { cart: { deliveryAddress, paymentMethod } } = state;
 
     const [paymentName, setPaymentName] = useState(paymentMethod || '');
 
+    /** if address is not filled */
     useEffect(() => {
         if (!deliveryAddress.address) {
             navigate('/delivery')
         }
     }, [deliveryAddress, navigate]);
 
+    /** Payment Form */
     const paymentFormHandler = (e) => {
         e.preventDefault();
         

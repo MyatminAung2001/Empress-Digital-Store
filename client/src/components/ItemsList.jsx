@@ -9,9 +9,11 @@ const ItemsList = ({ items }) => {
 
     const navigate = useNavigate();
 
+    /** Cart Context */
     const { state, dispatch: cartDispatch } = useContext(Context);
     const { cart: { cartItems } } = state;
 
+    /** Add to cart */
     const addToCartHandler = async (item) => {
         try {
             const existingItem = cartItems.find((x) => x._id === items._id);

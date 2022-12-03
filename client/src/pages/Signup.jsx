@@ -8,20 +8,22 @@ import { Context } from '../context/_context';
 
 const Login = () => {
 
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
-
     const navigate = useNavigate();
 
     const { search } = useLocation();
     const redirectUrl = new URLSearchParams(search).get('redirect');
     const redirect = redirectUrl ? redirectUrl : '/';
 
+    /** User Context */
     const { state, dispatch: authDispatch } = useContext(Context);
     const { userInfo } = state;
 
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+
+    /** Signup Form */
     const signupFormHandler = async (e) => {
         e.preventDefault();
         setIsLoading(true);
@@ -44,6 +46,7 @@ const Login = () => {
         }
     };
 
+    /** if user login redirect to current page */
     useEffect(() => {
         if (userInfo) {
             navigate(redirect);

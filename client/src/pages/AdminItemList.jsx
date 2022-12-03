@@ -14,19 +14,23 @@ const AdminItemList = () => {
 
     const navigate = useNavigate();
 
+    /** User Context */
+    const { state } = useContext(Context);
+    const { userInfo } = state;
+
+    /** ?page=page */
     const { search } = useLocation();
     const searchParams = new URLSearchParams(search);
 
     const page = searchParams.get('page') || 1;
 
+    /** Item List Reducer */
     const [{ loading, error, itemList, pages, loadingCreate, loadingDelete, successDelete }, dispatch] = useReducer(ItemListReducer, {
         loading: true,
         error: ''
     });
 
-    const { state } = useContext(Context);
-    const { userInfo } = state;
-
+    /** Fetch Item List */
     useEffect(() => {
         const fetchItemList = async () => {
             try {
@@ -58,7 +62,7 @@ const AdminItemList = () => {
         }
     }, [userInfo, page, successDelete]);
 
-    // Post New Item
+    /** Create New Item */
     const createNewItemHandler = async () => {
         try {
             dispatch({ type: "REQUEST_CREATE_ITEM" });
@@ -78,7 +82,7 @@ const AdminItemList = () => {
         }
     };
 
-    // Delete Item
+    /** Delete Item */
     const deleteItemHandler = async (item) => {
         try {
             dispatch({ type: "REQUEST_DELETE_ITEM" });
@@ -195,6 +199,7 @@ const AdminItemList = () => {
                                 </p>
                             )
                         }
+                        {/* Pagination */}
                         <div className="flex items-center gap-x-3 absolute bottom-[10px] left-1">
                             {[...Array(pages).keys()].map((x) => (
                                 <Link 

@@ -9,14 +9,17 @@ import Loading from '../components/Loading';
 
 const AdminDashboard = () => {
 
+    /** User Context */
+    const { state } = useContext(Context);
+    const { userInfo } = state;
+
+    /** DashBoard Reducer */
     const [{ loading, summary, error}, dispatch] = useReducer(DashBoardReducer, {
         loading: true,
         error: ''
     });
 
-    const { state } = useContext(Context);
-    const { userInfo } = state;
-
+    /** Fetch Summary Data */
     useEffect(() => {
         const fetchDasboardData = async () => {
             try {

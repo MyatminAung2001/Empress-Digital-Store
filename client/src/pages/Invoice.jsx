@@ -12,11 +12,13 @@ import Loading from '../components/Loading';
 
 const Invoice = () => {
 
+    const navigate = useNavigate();
+
+    /** User Context */
     const { state } = useContext(Context);
     const { userInfo } = state;
 
-    const navigate = useNavigate();
-
+    /** Order Detail */
     const params = useParams();
     const { id: orderId } = params;
 
@@ -28,7 +30,7 @@ const Invoice = () => {
         successPayment: false
     });
 
-    // Paypal
+    /** Paypal */
     const [{ pending }, paypalDispatch] = usePayPalScriptReducer();
 
     const createOrder = (data, actions) => {
@@ -72,6 +74,7 @@ const Invoice = () => {
         })
     };
 
+    /** Error */
     const onError = (error) => {
         toast.error(error.message)
     };

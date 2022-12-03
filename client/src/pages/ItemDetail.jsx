@@ -19,15 +19,18 @@ const ItemDetail = () => {
 
     const navigate = useNavigate();
 
+    /** Item Details */
     const location = useLocation();
     const itemId = location.pathname.split("/")[2];
 
+    /** Item Detail Reducer */
     const [{ loading, error, item, loadingReview }, dispatch] = useReducer(ItemDetailReducer, {
         loading: true,
         item: [],
         error: null
     });
 
+    /** Fetch Item Details */
     useEffect(() => {
         const fetchingDetails = async () => {
             try {
@@ -56,10 +59,11 @@ const ItemDetail = () => {
         fetchingDetails();
     }, [itemId]);
 
-    // Add to Cart
+    /** Cart Context */
     const { state, dispatch: cartDispatch } = useContext(Context);
     const { cart, userInfo } = state;
 
+    /** Add to cart */
     const addToCartHandler = async () => {
         try {
             const existingItem = cart.cartItems.find((x) => x._id === item._id);
@@ -86,7 +90,7 @@ const ItemDetail = () => {
         }
     };
 
-    // Review
+    /** Review */
     const reviewSubmitHandler = async (e) => {
         e.preventDefault();
         if (!comment || !rating) {

@@ -11,19 +11,23 @@ import Loading from '../components/Loading';
 
 const AdminUserList = () => {
 
+    /** User Context */
+    const { state } = useContext(Context);
+    const { userInfo } = state;
+
+    /** ?page=page */
     const { search } = useLocation();
     const searchParams = new URLSearchParams(search);
 
     const page = searchParams.get('page') || 1;
 
-    const { state } = useContext(Context);
-    const { userInfo } = state;
-
+    /** User List Reducer */
     const [{ loading, error, usersList, pages, loadingDelete, successDelete }, dispatch] = useReducer(UserListReducer, {
         loading: true,
         error: ''
     });
 
+    /** Fetch User List */
     useEffect(() => {
         const fetchUserList = async () => {
             try {
@@ -55,6 +59,7 @@ const AdminUserList = () => {
         }
     }, [userInfo, successDelete, page]);
 
+    /** Delete User */
     const deleteUserHandler = async (user) => {
         try {
             dispatch({ type: "REQUEST_DELETE_USER" });

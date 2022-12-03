@@ -20,9 +20,11 @@ const Login = () => {
     const redirectUrl = new URLSearchParams(search).get('redirect');
     const redirect = redirectUrl ? redirectUrl : '/';
 
+    /** User Context */
     const { state , dispatch: authDispatch } = useContext(Context);
     const { userInfo } = state;
 
+    /** Login */
     const loginFormHandler = async (e) => {
         e.preventDefault();
         setIsLoading(true);
@@ -45,6 +47,7 @@ const Login = () => {
         }
     };
 
+    /** if user login redirect current page */
     useEffect(() => {
         if (userInfo) {
             navigate(redirect);

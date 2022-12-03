@@ -10,12 +10,13 @@ import { Context } from '../context/_context';
 
 const Cart = () => {
 
+    const navigate = useNavigate();
+
+    /** Cart Context */
     const { state, dispatch: cartDispatch } = useContext(Context);
     const { cart: { cartItems } } = state;
 
-    const navigate = useNavigate();
-
-    // Increase & Decrease Cart Items
+    /** Increase & Decrease Cart Items */
     const cartItemHandler = async (item, quantity) => {
         try {
             const { data } = await axios.get(
@@ -38,7 +39,7 @@ const Cart = () => {
         }
     };
 
-    // Remove Cart Item
+    /** Remove Cart Item */ 
     const removeCartItemHandler = (item) => {
         cartDispatch({
             type: "REMOVE_FROM_CART",
@@ -46,7 +47,7 @@ const Cart = () => {
         })
     };
 
-    // Checkout
+    /** Checkout */
     const checkoutHandler = () => {
         navigate('/login?redirect=/delivery')
     };

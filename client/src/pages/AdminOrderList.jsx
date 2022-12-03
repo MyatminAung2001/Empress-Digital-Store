@@ -14,19 +14,23 @@ const AdminOrderList = () => {
 
     const navigate = useNavigate();
 
+    /** User Context */
+    const { state } = useContext(Context);
+    const { userInfo } = state;
+
+    /** ?page=page */
     const { search } = useLocation();
     const searchParams = new URLSearchParams(search);
 
     const page = searchParams.get('page') || 1;
 
-    const { state } = useContext(Context);
-    const { userInfo } = state;
-
+    /** Order List Reducer */
     const [{ loading, error, ordersList, pages, loadingDelete, successDelete }, dispatch] = useReducer(OrderListReducer, {
         loading: true,
         error: ''
     });
 
+    /** Fetch Order List */
     useEffect(() => {
         const fetchOrderList = async () => {
             try {
@@ -58,7 +62,7 @@ const AdminOrderList = () => {
         }
     }, [userInfo, page, successDelete]);
 
-    // Order Delete
+    /** Order Delete */
     const deleteOrderHandler = async (order) => {
         try {
             dispatch({ type: "REQUEST_DELETE_ORDER" });
@@ -163,6 +167,7 @@ const AdminOrderList = () => {
                                 </p>
                             )
                         }
+                        {/* Pagination */}
                         <div className="flex items-center gap-x-3 absolute bottom-[10px] left-1">
                             {[...Array(pages).keys()].map((x) => (
                                 <Link 

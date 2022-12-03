@@ -13,6 +13,7 @@ const Navigation = () => {
     
     const navigate = useNavigate();
 
+    /** User Context */
     const { state, dispatch: authDispatch } = useContext(Context);
     const { cart, userInfo } = state;
 
@@ -20,10 +21,12 @@ const Navigation = () => {
     const [sidebar, setSidebar] = useState(false);
     const [categories, setCategories] = useState([]);
     
+    /** Modal */
     const modalClickHandler = () => {
         setModal(!modal);
     };
 
+    /** Logout */
     const logoutHandler = () => {
         authDispatch({
             type: "LOGOUT"
@@ -35,6 +38,7 @@ const Navigation = () => {
         navigate('/')
     };
 
+    /** Fetch Categories */
     useEffect(() => {
         const fetchCategories = async () => {
             try {

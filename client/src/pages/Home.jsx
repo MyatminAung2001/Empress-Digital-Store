@@ -12,13 +12,15 @@ import Loading from '../components/Loading';
 import Featured from '../components/Featured';
 
 const Item = () => {
-    
+
+    /** Item Reducer */
     const [{ loading, error, items }, dispatch] = useReducer(ItemReducer, {
         items: [],
         loading: true,
         error: null
     });
 
+    /** Fetch Item */
     useEffect(() => {
         const fetchingItems = async () => {
             try {

@@ -9,16 +9,19 @@ import Loading from '../components/Loading';
 
 const OrderHistory = () => {
 
+    const navigate = useNavigate();
+
+    /** User Context */
     const { state } = useContext(Context);
     const { userInfo } = state;
 
-    const navigate = useNavigate();
-
+    /** Order History Reducer */
     const [{ loading, error, orders }, dispatch] = useReducer(OrderHistoryReducer, {
         loading: true,
         error: '',
     });
 
+    /** Fetch Order History */
     useEffect(() => {
         const fetchOrderHistory = async () => {
             try {

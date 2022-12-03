@@ -9,6 +9,7 @@ const Delivery = () => {
 
     const navigate = useNavigate(); 
 
+    /** Deliver Context */
     const { state, dispatch: addressDispatch } = useContext(Context);
     const { userInfo, cart : { deliveryAddress } } = state;
 
@@ -17,6 +18,7 @@ const Delivery = () => {
     const [city, setCity] = useState(deliveryAddress.city || "");
     const [address, setAddress] = useState(deliveryAddress.address || "");
 
+    /** Delivery Form */
     const deliveryFormHandler = (e) => {
         e.preventDefault();
 
@@ -34,6 +36,7 @@ const Delivery = () => {
         navigate('/payment');
     };
 
+    /** If user login redirect to current page */
     useEffect(() => {
         if (!userInfo) {
             navigate('login?redirect=/shipping');

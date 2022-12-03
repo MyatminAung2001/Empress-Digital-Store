@@ -16,8 +16,9 @@ const Shop = () => {
 
     const navigate = useNavigate();
 
+    /** search?category=laptops */
     const { search } = useLocation();
-    const searchParams = new URLSearchParams(search); // search?category=laptops
+    const searchParams = new URLSearchParams(search);
 
     const category = searchParams.get('category') || 'all';
     const query = searchParams.get('query') || 'all';
@@ -26,11 +27,13 @@ const Shop = () => {
     const order = searchParams.get('order') || 'newest';
     const page  = searchParams.get('page') || 1;
 
+    /** Item Search Reducer */
     const [{ loading, error, items, pages, countItems }, dispatch] = useReducer(ItemSearchReducer, {
         loading: true,
         error: ''
     });
 
+    /** Fetch Search Item */
     useEffect(() => {
         const fetchSearchItem = async () => {
             try {
@@ -56,7 +59,7 @@ const Shop = () => {
         fetchSearchItem();
     }, [query, price, rating, category, page, order, error]);
 
-    // Categories
+    /** Categories */
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
@@ -73,7 +76,7 @@ const Shop = () => {
         fetchCategories();
     }, []);
 
-    // Filter Url
+    /** Filter Url */
     const filteringURL = (filter) => {
         const filterPage = filter.page || page;
         const filterCategory = filter.category || category;

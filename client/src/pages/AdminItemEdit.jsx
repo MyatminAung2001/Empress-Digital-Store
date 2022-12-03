@@ -12,7 +12,12 @@ const AdminItemEdit = () => {
 
     const navigate = useNavigate();
 
-    const params = useParams(); // items/:id
+    /** User Context */
+    const { state } = useContext(Context);
+    const { userInfo } = state;
+
+    /** items/:id */
+    const params = useParams();
     const { id: itemId } = params;
 
     const [name, setName] = useState('');
@@ -26,14 +31,13 @@ const AdminItemEdit = () => {
     const [image, setImage] = useState('');
     const [inStock, setInStock] = useState('');
 
+    /** Item Edit Reducer */
     const [{ loading, error, loadingUpdate, loadingUpload }, dispatch] = useReducer(ItemEditReducer, {
         loading: true,
         error: ''
     });
 
-    const { state } = useContext(Context);
-    const { userInfo } = state;
-
+    /** Fetch Item Data Edit */
     useEffect(() => {
         const fetchItemData = async () => {
             try {   
@@ -67,6 +71,7 @@ const AdminItemEdit = () => {
         fetchItemData();
     }, [itemId]);
 
+    /** Update Item */
     const updateItemHandler = async (e) => {
         e.preventDefault();
         try {
@@ -92,6 +97,7 @@ const AdminItemEdit = () => {
         }
     };
 
+    /** Image Upload */
     const uploadImageHandler = async (e, imageFile) => {
         const file = e.target.files[0];
         const formData = new FormData();
