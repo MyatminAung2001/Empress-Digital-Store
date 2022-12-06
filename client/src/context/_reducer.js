@@ -1,6 +1,6 @@
 export const reducer = (state, action) => {
     switch (action.type) {
-        // Auth
+        /** Auth */
         case "REQUEST_LOGIN": {
             return {
                 ...state,
@@ -18,17 +18,15 @@ export const reducer = (state, action) => {
                 }
             }
         }
-        // Cart
+        /** Cart */
         case "ADD_TO_CART": {
             const newItem = action.payload;
 
             const existingItem = state.cart.cartItems.find(
                 (item) => item._id === newItem._id
             );
-
-            const cartItems = existingItem
-                ? state.cart.cartItems.map((item) => item._id === existingItem._id ? newItem : item)
-                : [...state.cart.cartItems, newItem]
+            
+            const cartItems = existingItem ? state.cart.cartItems.map((item) => item._id === existingItem._id ? newItem : item) : [...state.cart.cartItems, newItem]
             
             localStorage.setItem('cart', JSON.stringify(cartItems));
 
@@ -63,7 +61,7 @@ export const reducer = (state, action) => {
                 }
             }
         }
-        // Delivery Address
+        /** Delivery Address */
         case "SAVE_DELIVERY_ADDRESS": {
             return {
                 ...state,
@@ -73,7 +71,7 @@ export const reducer = (state, action) => {
                 }
             }
         }
-        // Payment Method
+        /** Payment Method */
         case "SAVE_PAYMENT_METHOD": {
             return {
                 ...state,
