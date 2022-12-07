@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { BiShow, BiHide } from 'react-icons/bi'
 import { Helmet } from 'react-helmet-async';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,6 +14,7 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const navigate = useNavigate();
 
@@ -27,6 +29,17 @@ const Login = () => {
     /** Login */
     const loginFormHandler = async (e) => {
         e.preventDefault();
+
+        if (email === "") {
+            toast.error("Email is required")
+        } else if (!email.includes("@")) {
+            toast.warning("Includes @ in your email")
+        } else if (password === "") {
+            toast.error("Password is required")
+        } else if (password.length < 6) {
+            toast.error("Password must be 6 char")
+        }
+
         setIsLoading(true);
         try {
             const { data } = await axios.post(
@@ -104,15 +117,26 @@ const Login = () => {
                             <label className="block mb-2">
                                 Password
                             </label>
-                            <input 
-                                type="password" 
-                                name="password"
-                                value={password}
-                                required
-                                placeholder="Please enter your password"
-                                onChange={(e) => setPassword(e.target.value)}
-                                className="w-[100%] px-4 py-2 rounded-md border text-sm placeholder:text-sm focus:outline-none"
-                            />
+                            <div className="flex items-center justify-between w-[100%] px-4 py-2 rounded-md border">
+                                <input 
+                                    type={!showPassword ? "password" : "text"}
+                                    name="password"
+                                    value={password}
+                                    required
+                                    placeholder="Please enter your password"
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    className="w-[100%] text-sm placeholder:text-sm focus:outline-none"
+                                />
+                                <div onClick={() => setShowPassword(!showPassword)}>
+                                    {
+                                        !showPassword ? (
+                                            <BiHide size={23} />
+                                        ) : (
+                                            <BiShow size={23} />
+                                        )
+                                    }
+                                </div>
+                            </div>
                         </div>
                         <button 
                             type="submit"
