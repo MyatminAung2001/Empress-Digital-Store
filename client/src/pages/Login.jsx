@@ -130,9 +130,9 @@ const Login = () => {
                                 <div onClick={() => setShowPassword(!showPassword)}>
                                     {
                                         !showPassword ? (
-                                            <BiHide size={23} />
+                                            <BiHide size={23} color="#6c757d" />
                                         ) : (
-                                            <BiShow size={23} />
+                                            <BiShow size={23} color="#6c757d" />
                                         )
                                     }
                                 </div>
