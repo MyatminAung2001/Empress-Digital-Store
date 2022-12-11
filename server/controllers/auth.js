@@ -5,9 +5,15 @@ import { generateToken } from '../utils/generateToken.js';
 
 // Signup
 export const signup = async (req, res, next) => {
-    const name = req.body.name;
-    const email = req.body.email;
-    const password = req.body.password;
+
+    const { name, email, password } = req.body;
+
+    if (!name || !email || !password ) {
+        res.status(422).json({
+            error: "Please fill all fields"
+        });
+    }
+
     try {
         const salt = await bcrypt.genSalt(12);
         const hashedPassword = await bcrypt.hash(password, salt);
@@ -38,8 +44,9 @@ export const signup = async (req, res, next) => {
 
 // Login
 export const login = async (req, res, next) => {
-    const email = req.body.email;
-    const password = req.body.password;
+    
+    const { email, password } = req.body;
+
     try {
         const user = await User.findOne({ email: email });
         if (!user) {
